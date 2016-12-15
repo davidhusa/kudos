@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Leader:</strong>
+  <%= @team.leader && @team.leader.name %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @team.start_date %>
+</p>
+
+<p>
+  <strong>Sprint Days:</strong>
+  <%= @team.sprint_days %> days
+</p>
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

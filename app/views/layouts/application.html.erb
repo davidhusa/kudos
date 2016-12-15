@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= [current_account && current_account.name, controller_name.capitalize, "Kudos"].compact.join(" | ") %></title>
+    <%= csrf_meta_tags %>
+
+    <div id="alert"><%= flash["alert"] %></div>
+    <div id="notice"><%= flash["notice"] %></div>
+
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    
+    <div id="wrapper">
+      <div id="navbar">
+        <%= navigation_links.join(' | ').html_safe %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

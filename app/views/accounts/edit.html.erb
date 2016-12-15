@@ -1,0 +1,7 @@
+<h1>Editing Account</h1>
+
+<%= render 'form', account: @account %>
+
+<% if admin? %>
+  <%= link_to 'Index', accounts_path %>
+<% end %>
