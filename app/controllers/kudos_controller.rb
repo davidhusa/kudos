@@ -7,7 +7,7 @@ class KudosController < ApplicationController
   before_action :control_edit_access!, only: [:update, :edit, :destroy]
 
   def index
-    @kudos = Kudo.where(sprint: @team.sprint).all.reverse
+    @kudos = Kudo.where(sprint: @team.sprint, team_id: @team.id).all.reverse
 
     @members = @team.accounts
   end
