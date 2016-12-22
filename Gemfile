@@ -26,3 +26,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # -----
 gem 'devise', '~> 4.2.0'
 gem 'paperclip', '~> 5.0.0'
+gem 'whenever', '~> 0.9.7', require: false
