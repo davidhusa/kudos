@@ -21,3 +21,4 @@
 .byebug_history
 
 secrets.txt
+public/system/*

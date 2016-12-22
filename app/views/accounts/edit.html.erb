@@ -6,9 +6,16 @@
 
 <%= render 'form', account: @account %>
 
-<div>Teams:</div>
-<% @account.teams.each do |team| %>
-  <div>
-    <%= link_to team.name, team %>
-  </div>
+<% unless current_account.needs_customization? %>
+  <div>Teams:</div>
+  <% @account.teams.each do |team| %>
+    <div>
+      <%= link_to team.name, team %>
+    </div>
+  <% end %>
+  <% if @account.teams.size == 0 %>
+    <div class="large">
+      <%= link_to "Join a team!", teams_url %>
+    </div>
+  <% end %>
 <% end %>
