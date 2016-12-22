@@ -1,13 +1,14 @@
 default: &default
   adapter: postgresql
-  pool: 5
-  host: localhost
-  username: mao
-  password: maomao
+  pool: 15
+  encoding: utf8
   timeout: 5000
 
 development:
   <<: *default
+  host: localhost
+  username: mao
+  password: maomao
   database: kudo_dev
 
 # Warning: The database defined as "test" will be erased and
@@ -15,6 +16,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
+  username: mao
+  password: maomao
   database: kudo_test
 
 production:
