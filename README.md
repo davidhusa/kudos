@@ -1,24 +1,17 @@
-# README
+    Ruby version: 
+2.3.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    
+System dependencies:
+postgres imagemagick libmagickwand-dev
 
-Things you may want to cover:
+    
+Setup:
+Run $ rake db:seed to add a root user (configure login in UI or in db/seeds.rb)
 
-* Ruby version
+    
+Services (job queues, cache servers, search engines, etc.)
+Must run FinishSprintsJob daily in early morning
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    
+Deployment instructions

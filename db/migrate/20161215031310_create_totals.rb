@@ -10,6 +10,6 @@ class CreateTotals < ActiveRecord::Migration[5.0]
 
     add_foreign_key :totals, :accounts, column: :to_id
     add_foreign_key :totals, :accounts, column: :from_id
-    add_index :totals, [:to_id, :from_id], :unique => true
+    add_index :totals, [:to_id, :from_id]
   end
 end

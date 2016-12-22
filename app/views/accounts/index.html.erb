@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Accounts</h1>
+<h2>Account Management</h2>
 
 <table>
   <thead>
@@ -16,9 +14,7 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.name %></td>
-        <td><%= image_tag account.photo || '' %></td>
-        <td><%= account.about %></td>
-        <td><%= account.status %></td>
+        <td><%= image_tag account.photo(:thumb) %></td>
         <td><%= account.user.email %></td>
         <td><%= link_to 'Focus', teams_path(focus: account.id) %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>

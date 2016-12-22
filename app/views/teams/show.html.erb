@@ -4,18 +4,13 @@
 </p>
 
 <p>
-  <strong>Leader:</strong>
-  <%= @team.leader && @team.leader.name %>
+  <strong>Members:</strong> <%= member_names(@team) %>
 </p>
 
 <p>
-  <strong>Start Date:</strong>
-  <%= @team.start_date %>
-</p>
-
-<p>
-  <strong>Sprint Days:</strong>
-  <%= @team.sprint_days %> days
+  <strong>Settings:</strong>
+  Start Date: <%= @team.start_date.strftime('%Y-%m-%d') %>,
+  Interval: <%= @team.sprint_days %> days
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |

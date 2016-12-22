@@ -1,7 +1,8 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy, :quit, :join]
   before_action :authenticate_user!
-  before_action :make_account_if_needed
+  before_action :customize_account_if_needed
+  before_action :control_edit_access!, only: [:update, :edit, :destroy]
 
   def quit
     AccountsTeam.find_by(account_id: current_account.id, team_id: @team.id).destroy
@@ -18,6 +19,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    redirect_to team_kudos_path(@team) unless leader?(@team)
   end
 
   def new
@@ -58,5 +60,12 @@ class TeamsController < ApplicationController
 
     def team_params
       params.require(:team).permit(:name, :start_date, :sprint_days)
+    end
+
+    def control_edit_access!
+      unless admin? || leader?(@team)
+        flash[:error] = "Unauthorized edit"
+        redirect_to teams_path(@team)
+      end
     end
 end

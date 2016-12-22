@@ -7,4 +7,11 @@ class Team < ApplicationRecord
   validates :name, presence: true
   validates :sprint_days, inclusion: {in: (1..365)}
 
+  def sprint_end_day?
+    days_left_in_sprint == 0
+  end
+
+  def days_left_in_sprint
+    (DateTime.now.to_i - start_date.to_datetime.to_i)/24/60/60 % sprint_days
+  end
 end

@@ -10,20 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215070544) do
+ActiveRecord::Schema.define(version: 20161221211553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
-    t.string   "photo"
     t.text     "about"
     t.string   "default_role"
     t.string   "status"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
 
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 20161215070544) do
     t.integer  "team_id"
     t.index ["from_id"], name: "index_totals_on_from_id", using: :btree
     t.index ["team_id"], name: "index_totals_on_team_id", using: :btree
-    t.index ["to_id", "from_id"], name: "index_totals_on_to_id_and_from_id", unique: true, using: :btree
+    t.index ["to_id", "from_id"], name: "index_totals_on_to_id_and_from_id", using: :btree
     t.index ["to_id"], name: "index_totals_on_to_id", using: :btree
   end
 

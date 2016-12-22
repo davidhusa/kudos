@@ -1,29 +1,66 @@
-<h1>Kudos</h1>
+<h2>Team: <%= @team.name %></h2>
+<h3>Days left in sprint: <%= @team.days_left_in_sprint %></h3>
+<h3>Leader: <%= leader_name(@team) %></h3>
 
+<%= link_to 'Give a Kudo!', new_team_kudo_path(@team), class: 'large' %>
+
+<h3>Team Members</h3>
 <table>
   <thead>
     <tr>
-      <th>Account</th>
-      <th>Account</th>
+      <th>Name</th>
+      <th>Total Kudos</th>
+      <th>Date Joined</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= member.total_kudos(@team) %></td>
+        <td><%= member.date_joined(@team).strftime('%Y-%m-%d') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Kudos this sprint</h3>
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th></th>
+      <th>To</th>
       <th>Comment</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @kudos.each do |kudo| %>
       <tr>
-        <td><%= kudo.account %></td>
-        <td><%= kudo.account %></td>
+        <td><%= image_tag kudo.from.photo(:thumb) %></td>
+        <td>→</td>
+        <td><%= image_tag kudo.to.photo(:thumb) %></td>
         <td><%= kudo.comment %></td>
-        <td><%= link_to 'Show', kudo %></td>
-        <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
-        <td><%= link_to 'Destroy', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin? || leader?(kudo.team) %>
+          <td><%= link_to 'Edit', edit_team_kudo_path(@team, kudo) %></td>
+        <% else %>
+          <td></td>
+        <% end %>
       </tr>
+      <tr>
+        <td><%= kudo.from.name %></td>
+        <td></td>
+        <td><%= kudo.to.name %></td>
+        <td></td>
+        <td></td>
+      </tr>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Kudo', new_kudo_path %>

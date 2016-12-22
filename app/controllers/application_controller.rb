@@ -14,8 +14,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def make_account_if_needed
-    redirect_to edit_account_url unless current_account
+  def customize_account_if_needed
+    if current_account.needs_customization?
+      flash[:notice] = "Welcome to Kudos, the world's only web app for giving and receiving Kudos. Update your profile, join your team, and give up your three kudos!!"
+      redirect_to edit_account_url(current_account)
+    end
   end
 
   def admin_only
@@ -30,9 +33,13 @@ class ApplicationController < ActionController::Base
     cookies[:focus].to_i > 0
   end
 
+  def leader?(team)
+    current_account && Team.where(leader_id: current_account.id).all.include?(team)
+  end
+  helper_method :leader?
+
   def current_account
     @current_account ||= if admin?
-      
       cookies[:focus] = params[:focus] if params[:focus]
       Account.find_by_id(cookies[:focus].to_i) || current_user.account
     elsif current_user

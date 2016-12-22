@@ -12,14 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :account_id %>
-    <%= f.text_field :account_id %>
+    <%= f.label :to_id %>
+    <%= f.select :to_id, to_field(@team, kudo) %>
   </div>
 
-  <div class="field">
-    <%= f.label :account_id %>
-    <%= f.text_field :account_id %>
-  </div>
 
   <div class="field">
     <%= f.label :comment %>

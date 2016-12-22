@@ -13,13 +13,18 @@
  *= require_tree .
  *= require_self
  */
-
-#navbar{
+body {
+    background: #FFFFFF;
 }
 
 *  {
     margin: 0;
     padding: 0;
+    color: #144955;
+}
+
+.ital {
+   font-style: italic;   
 }
 
 .large {
@@ -27,16 +32,23 @@
     margin-top: 10px;
 }
 
-.ital {
-   font-style: italic;   
+#alert {
+    color:red;
 }
 
 a {
+    color: #F14C38;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    background: #F14C38;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+h2 {
+    margin-top: 10px;
 }
 
 #wrapper {
@@ -48,29 +60,23 @@ a:hover {
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     border-radius: 16px;
-    background: #F7F9F9; 
+    background: #F4F1E0; 
 }
 
 body {
     font-family: Inconsolata, sans-serif;
 }
 
-.nav a {
-   /*color: black;*/
+#kudo_comment {
+    width: 400px;
 }
 
-@media screen and (max-width: 620px) /* max-width value to change based on contacts size */ {
-    .contacts {
-        background: red;
-        display: inline;
-    }
-    .contacts div {
-        text-align: left;
-        margin-top: 1px;
-        margin-bottom: 1px;
-        text-align: center;
-    }
-    .contacts div span {
-        padding: 8px;
-    }
+textarea {
+    height: 90px;
+    width: 400px;
 }
+
+/*
+blublak, red, beige, white
+#144955, #F14C38, #F4F1E0, #FFFFFF
+*/

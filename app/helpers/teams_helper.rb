@@ -7,7 +7,11 @@ module TeamsHelper
     end
   end
 
-  def leader?(team)
-    current_account && Team.where(leader_id: current_account.id).all.include?(team)
+  def member_names(team, max_length = 64)
+    team.accounts.map(&:name).join(', ')
+  end
+
+  def leader_name(team)
+    team.leader ? team.leader.name : "N/A"
   end
 end

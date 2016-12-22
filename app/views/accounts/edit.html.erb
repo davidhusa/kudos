@@ -1,7 +1,14 @@
-<h1>Editing Account</h1>
+<% if current_account.needs_customization? %>
+  <h1>Creating Account</h1>
+<% else %>
+  <h1>Editing Account</h1>
+<% end %>
 
 <%= render 'form', account: @account %>
 
-<% if admin? %>
-  <%= link_to 'Index', accounts_path %>
+<div>Teams:</div>
+<% @account.teams.each do |team| %>
+  <div>
+    <%= link_to team.name, team %>
+  </div>
 <% end %>

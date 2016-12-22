@@ -16,14 +16,14 @@
     <%= f.text_field :name %>
   </div>
 
+
+  <div>
+    <div class="label">Current Photo</div>
+    <%= image_tag account.photo(:large) %>
+  </div>
   <div class="field">
     <%= f.label :photo %>
-    <%= f.text_field :photo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
+    <%= f.file_field :photo %>
   </div>
 
   <div class="actions">
